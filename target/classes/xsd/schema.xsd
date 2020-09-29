@@ -1,0 +1,90 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://skmb.vtb.ru/usbs"
+           targetNamespace="http://skmb.vtb.ru/usbs"
+           elementFormDefault="qualified">
+
+    <xs:element name="GetRelatedPartiesEBM">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="NestingLevel" type="xs:string"/>
+                <xs:element name="MinOwningLevel" type="xs:string"/>
+                <xs:element name="PartyIdentification" type="tns:PartyIdentification"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="PartyIdentification">
+        <xs:sequence>
+            <xs:element name="ID" type="xs:string"/>
+            <xs:element name="PartyClass" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="GetRelatedPartiesResponseEBM">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="partyIdentification" type="tns:PartyIdentification"/>
+                <xs:element name="rbgGroup" type="tns:RbgGroup"/>
+                <xs:element name="errorCd" type="xs:string"/>
+                <xs:element name="errorNm" type="xs:string"/>
+                <xs:element name="connection" type="tns:RbgConnection"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="RbgGroup">
+        <xs:sequence>
+            <xs:element name="rbgIndividual" type="tns:RbgIndividual"/>
+            <xs:element name="rbgLegalEntities" type="tns:RbgLegalEntity"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RbgConnection">
+        <xs:sequence>
+            <xs:element name="connectionId" type="xs:string"/>
+            <xs:element name="grbId" type="xs:string"/>
+            <xs:element name="partCd" type="xs:string"/>
+            <xs:element name="connectionType" type="xs:string"/>
+            <xs:element name="connectionForm" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RbgIndividual">
+        <xs:sequence>
+            <xs:element name="grbIdIndividual" type="xs:string"/>
+            <xs:element name="firstNm" type="xs:string"/>
+            <xs:element name="lastNm" type="xs:string"/>
+            <xs:element name="birthDt" type="xs:date"/>
+            <xs:element name="birthPlaceNm" type="xs:string"/>
+            <xs:element name="genderCd" type="xs:string"/>
+            <xs:element name="countryCd" type="xs:string"/>
+            <xs:element name="documentTypeCd" type="xs:string"/>
+            <xs:element name="docSeries" type="xs:string"/>
+            <xs:element name="docNum" type="xs:string"/>
+            <xs:element name="issueDt" type="xs:date"/>
+            <xs:element name="expirationDt" type="xs:date"/>
+            <xs:element name="issuerNm" type="xs:string"/>
+            <xs:element name="issuerCd" type="xs:string"/>
+            <xs:element name="middleNm" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RbgLegalEntity">
+        <xs:sequence>
+            <xs:element name="grbIdLegalEntity" type="xs:string"/>
+            <xs:element name="legalEntityNm" type="xs:string"/>
+            <xs:element name="legalEntityNmSh" type="xs:string"/>
+            <xs:element name="countryCd" type="xs:string"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="clientTypeCd" type="xs:string"/>
+            <xs:element name="numberCd" type="xs:string"/>
+            <xs:element name="registrationCd" type="xs:string"/>
+            <xs:element name="registrationDt" type="xs:date"/>
+            <xs:element name="innNum" type="xs:string"/>
+            <xs:element name="okpoNum" type="xs:string"/>
+            <xs:element name="ogrnNum" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>
